@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="mint">#C0ECAA</color>
+    <color name="blue">#2840A9</color>
+
+    <!-- Indigo - Tailwind v3 -->
+    <color name="indigo_50">#EEF2FF</color>
+    <color name="indigo_100">#E0E7FF</color>
+    <color name="indigo_200">#C7D2FE</color>
+    <color name="indigo_500">#6366F1</color>
+    <color name="indigo_600">#4F46E5</color>
+    <color name="indigo_700">#4338CA</color>
+
+    <!-- Emerald - Tailwind v3 -->
+    <color name="emerald_50">#ECFDF5</color>
+    <color name="emerald_100">#D1FAE5</color>
+    <color name="emerald_200">#A7F3D0</color>
+    <color name="emerald_400">#34D399</color>
+    <color name="emerald_500">#10B981</color>
+    <color name="emerald_800">#065F46</color>
+
+    <!-- Surfaces (Tints) -->
+    <color name="surface_indigo_50">#EEF2FF</color>
+    <color name="surface_indigo_100">#E0E7FF</color>
+    <color name="surface_indigo_200">#C7D2FE</color>
+    <color name="surface_emerald_50">#ECFDF5</color>
+    <color name="surface_emerald_100">#D1FAE5</color>
+    <color name="surface_emerald_200">#A7F3D0</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="surface_paper_white">#FBFBFF</color>
+
+    <!-- Neutral (Zinc) - Tailwind v3 -->
+    <color name="zinc_50">#FAFAFA</color>
+    <color name="zinc_100">#F4F4F5</color>
+    <color name="zinc_200">#E4E4E7</color>
+    <color name="zinc_300">#D4D4D8</color>
+    <color name="zinc_400">#A1A1AA</color>
+    <color name="zinc_500">#71717A</color>
+    <color name="zinc_600">#52525B</color>
+    <color name="zinc_700">#3F3F46</color>
+    <color name="zinc_900">#18181B</color>
+
+    <!-- Badges -->
+    <color name="badge_high_bg">#FFE4E6</color>   <!-- Rose 100 -->
+    <color name="badge_med_bg">#FEF3C7</color>    <!-- Amber 100 -->
+    <color name="badge_low_bg">#D1FAE5</color>    <!-- Emerald 100 -->
+
+    <!-- Decor / Overlays -->
+    <color name="black_90">#E6000000</color>     <!-- Black @90% -->
+    <color name="white_60">#99FFFFFF</color>     <!-- White @60% -->
+    <color name="dot_tint_6">#0F7D7DC7</color>   <!-- Lavender @6% (ARGB) -->
+</resources>

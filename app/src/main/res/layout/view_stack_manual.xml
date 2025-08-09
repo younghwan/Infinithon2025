@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingTop="20dp"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="도메인"
+        android:fontFamily="@font/spoqa_han_sans_neo_medium"
+        android:textAppearance="?attr/textAppearanceTitleSmall"
+        android:paddingBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            app:chipBackgroundColor="@color/white"
+            app:chipCornerRadius="@dimen/radius_16"
+            app:chipIcon="@drawable/dot_mint"
+            app:chipIconSize="8dp"
+            app:chipIconVisible="true"
+            android:layout_marginEnd="6dp"
+            app:chipStrokeColor="@color/zinc_300"
+            app:chipStrokeWidth="1dp"
+            android:text="Android" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            app:chipBackgroundColor="@color/white"
+            app:chipCornerRadius="@dimen/radius_16"
+            app:chipIcon="@drawable/dot_mint"
+            app:chipIconSize="8dp"
+            app:chipIconVisible="true"
+            android:layout_marginEnd="6dp"
+            app:chipStrokeColor="@color/zinc_300"
+            app:chipStrokeWidth="1dp"
+            android:text="iOS" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            app:chipBackgroundColor="@color/white"
+            app:chipCornerRadius="@dimen/radius_16"
+            app:chipIcon="@drawable/dot_mint"
+            app:chipIconSize="8dp"
+            app:chipIconVisible="true"
+            android:layout_marginEnd="6dp"
+            app:chipStrokeColor="@color/zinc_300"
+            app:chipStrokeWidth="1dp"
+            android:text="Web" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            app:chipBackgroundColor="@color/white"
+            app:chipCornerRadius="@dimen/radius_16"
+            app:chipIcon="@drawable/dot_mint"
+            app:chipIconSize="8dp"
+            app:chipIconVisible="true"
+            android:layout_marginEnd="6dp"
+            app:chipStrokeColor="@color/zinc_300"
+            app:chipStrokeWidth="1dp"
+            android:text="Backend" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            app:chipBackgroundColor="@color/white"
+            app:chipCornerRadius="@dimen/radius_16"
+            app:chipIcon="@drawable/dot_mint"
+            app:chipIconSize="8dp"
+            app:chipIconVisible="true"
+            android:layout_marginEnd="6dp"
+            app:chipStrokeColor="@color/zinc_300"
+            app:chipStrokeWidth="1dp"
+            android:text="Game" />
+
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            app:chipBackgroundColor="@color/white"
+            app:chipCornerRadius="@dimen/radius_16"
+            app:chipIcon="@drawable/dot_mint"
+            app:chipIconSize="8dp"
+            app:chipIconVisible="true"
+            android:layout_marginEnd="6dp"
+            app:chipStrokeColor="@color/zinc_300"
+            app:chipStrokeWidth="1dp"
+            android:text="AI" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="패키지"
+        android:fontFamily="@font/spoqa_han_sans_neo_medium"
+        android:textAppearance="?attr/textAppearanceTitleSmall"
+        android:paddingBottom="8dp" />
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridCorePackages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:columnCount="2"
+        app:rowCount="3"
+        app:useDefaultMargins="false">
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="kotlin"
+            app:layout_columnWeight="1"
+            app:useMaterialThemeColors="true" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            android:text="androidx.compose"
+            app:useMaterialThemeColors="true" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            android:text="okhttp"
+            app:useMaterialThemeColors="true" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            android:text="coroutines"
+            app:useMaterialThemeColors="true" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            android:text="firebase-bom"
+            app:useMaterialThemeColors="true" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            android:text="flutter"
+            app:useMaterialThemeColors="true" />
+    </androidx.gridlayout.widget.GridLayout>
+</LinearLayout>
