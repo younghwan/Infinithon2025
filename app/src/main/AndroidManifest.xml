@@ -26,6 +26,7 @@
         <activity
             android:name=".StackActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/Theme.Releaspoon" />
         <activity
             android:name=".MainActivity"

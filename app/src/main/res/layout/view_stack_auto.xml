@@ -3,8 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:paddingTop="20dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="@dimen/radius_16"
+        app:strokeColor="@android:color/transparent"
+        android:background="@drawable/bg_item_spoon"
+        app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +41,7 @@
             android:textAppearance="?attr/textAppearanceBodySmall"
             android:textColor="?attr/colorOnSurfaceVariant" />
     </LinearLayout>
-
+    </com.google.android.material.card.MaterialCardView>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,6 +70,7 @@
             app:chipBackgroundColor="@color/white"
             app:chipCornerRadius="@dimen/radius_16"
             app:chipIconSize="8dp"
+            app:rippleColor="@android:color/transparent"
             app:ensureMinTouchTargetSize="false"
             app:checkedIcon="@drawable/dot_mint"
             app:chipIconVisible="false"
@@ -73,6 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
+            app:rippleColor="@android:color/transparent"
             android:fontFamily="@font/spoqa_han_sans_neo_medium"
             app:chipBackgroundColor="@color/white"
             app:chipCornerRadius="@dimen/radius_16"
@@ -96,6 +109,7 @@
             app:chipBackgroundColor="@color/white"
             app:chipCornerRadius="@dimen/radius_16"
             app:chipIconSize="8dp"
+            app:rippleColor="@android:color/transparent"
             app:checkedIcon="@drawable/dot_mint"
             app:chipIconVisible="false"
             app:checkedIconVisible="true"
@@ -113,6 +127,7 @@
             app:chipBackgroundColor="@color/white"
             app:chipCornerRadius="@dimen/radius_16"
             app:chipIconSize="8dp"
+            app:rippleColor="@android:color/transparent"
             app:ensureMinTouchTargetSize="false"
             app:checkedIcon="@drawable/dot_mint"
             app:chipIconVisible="false"
@@ -125,23 +140,28 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilUrl"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_button_pass"
+        app:boxBackgroundMode="none"
         android:gravity="center_vertical"
         app:endIconMode="clear_text"
-        app:hintEnabled="true"
-        app:hintTextColor="@color/zinc_500"
+        app:hintEnabled="false"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etUrl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:minHeight="50dp"
+            android:includeFontPadding="false"
             android:background="@android:color/transparent"
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
             android:gravity="center_vertical"
             android:inputType="textUri"
             android:maxLines="1"
+            android:hint="build.gradle"
+            android:textColorHint="@color/zinc_500"
+            android:padding="0dp"
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
     </com.google.android.material.textfield.TextInputLayout>

@@ -38,7 +38,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
             viewDataBinding.root.paddingRight,
             navigationHeight() + viewDataBinding.root.paddingBottom
         )
-
     }
 
     fun statusBarHeight(): Int {

@@ -17,11 +17,26 @@ class StackActivity : BaseActivity<ActivityStackBinding>() {
     private val mint300 by lazy { ContextCompat.getColor(this, R.color.emerald_500) }
     private val mint100 by lazy { ContextCompat.getColor(this, R.color.emerald_100) }
 
+    private val viewAuto by lazy { viewDataBinding.viewAuto }
+    private val defaultChipId by lazy { viewDataBinding.viewAuto.chipGradle.id }
     enum class FileKind { BUILD_GRADLE, PACKAGE_SWIFT, PUBSPEC_YAML, PACKAGE_JSON }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onClick()
+
+        // initial view
+        viewAuto.chipGroupKind.setOnCheckedStateChangeListener { group, checkedIds ->
+            val id = checkedIds.firstOrNull() ?: defaultChipId
+            group.children.forEach { view ->
+                val chip = view as com.google.android.material.chip.Chip
+                chip.isChipIconVisible = (chip.id == id)
+            }
+            viewAuto.etUrl.text = null
+            viewAuto.etUrl.hint = hintFor(kindFromChipId(id))
+        }
+        viewAuto.chipGroupKind.check( defaultChipId)
+        viewAuto.etUrl.hint = hintFor(kindFromChipId(defaultChipId))
     }
 
     private fun onClick() {
@@ -32,15 +47,6 @@ class StackActivity : BaseActivity<ActivityStackBinding>() {
 
             listOf(viewDataBinding.cvAuto, viewDataBinding.cvManual).forEach { c ->
                 c.setOnClickListener { buttonSelect(c.id == cvAuto.id) }
-            }
-
-            viewAuto.chipGroupKind.setOnCheckedStateChangeListener { group, checkedIds ->
-                val id = checkedIds.firstOrNull() ?: viewAuto.chipGradle.id
-                group.children.forEach { view ->
-                    val chip = view as com.google.android.material.chip.Chip
-                    chip.isChipIconVisible = (chip.id == id)
-                }
-                viewAuto.etUrl.hint = hintFor(kindFromChipId(id))
             }
         }
 
@@ -59,10 +65,10 @@ class StackActivity : BaseActivity<ActivityStackBinding>() {
     }
 
     private fun kindFromChipId(id: Int): FileKind = when (id) {
-        viewDataBinding.viewAuto.chipGradle.id -> FileKind.BUILD_GRADLE
-        viewDataBinding.viewAuto.chipSwift.id -> FileKind.PACKAGE_SWIFT
-        viewDataBinding.viewAuto.chipPubspec.id -> FileKind.PUBSPEC_YAML
-        viewDataBinding.viewAuto.chipPackageJson.id -> FileKind.PACKAGE_JSON
+        viewAuto.chipGradle.id -> FileKind.BUILD_GRADLE
+        viewAuto.chipSwift.id -> FileKind.PACKAGE_SWIFT
+        viewAuto.chipPubspec.id -> FileKind.PUBSPEC_YAML
+        viewAuto.chipPackageJson.id -> FileKind.PACKAGE_JSON
         else -> FileKind.BUILD_GRADLE
     }
 
