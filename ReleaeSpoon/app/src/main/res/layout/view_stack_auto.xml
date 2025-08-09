@@ -3,34 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:paddingTop="20dp">
 
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="@dimen/radius_16"
+        app:strokeColor="@android:color/transparent"
+        android:background="@drawable/bg_item_spoon"
+        app:cardUseCompatPadding="true">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/spoqa_han_sans_neo_regular"
-            android:paddingTop="12dp"
-            android:text="패키지 파일 URL 등록"
-            android:textAppearance="?attr/textAppearanceTitleSmall"
-            android:textFontWeight="600" />
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/spoqa_han_sans_neo_regular"
-            android:paddingBottom="12dp"
-            android:paddingTop="4dp"
-            android:text="프로젝트 루트의 build.gradle(.kts), pubspec.yaml, Package.swift 등 원격 파일 URL을 입력하세요. 여러 개를 등록하면 모두 스캔합니다."
-            android:textAppearance="?attr/textAppearanceBodySmall"
-            android:textColor="?attr/colorOnSurfaceVariant" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spoqa_han_sans_neo_regular"
+                android:paddingTop="12dp"
+                android:text="패키지 파일 URL 등록"
+                android:textAppearance="?attr/textAppearanceTitleSmall"
+                android:textFontWeight="600" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spoqa_han_sans_neo_regular"
+                android:paddingBottom="12dp"
+                android:paddingTop="4dp"
+                android:text="프로젝트 루트의 build.gradle(.kts), pubspec.yaml, Package.swift 등 원격 파일 URL을 입력하세요. 여러 개를 등록하면 모두 스캔합니다."
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,53 +50,118 @@
         android:text="URL"
         android:textAppearance="?attr/textAppearanceTitleSmall" />
 
-    <!-- 파일 종류 드롭다운 -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilKind"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+    <!-- 4개 중 반드시 1개 선택 -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupKind"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="파일 종류"
-        app:boxStrokeWidth="1dp"
-        android:background="@drawable/bg_button_pass"
-        app:boxStrokeWidthFocused="2dp"
-        app:layout_constraintEnd_toStartOf="@id/tilUrl"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content"
+        app:singleSelection="true"
+        app:selectionRequired="true"
+        android:clipToPadding="false"
+        android:paddingBottom="6dp">
 
-        <com.google.android.material.textfield.MaterialAutoCompleteTextView
-            android:id="@+id/actKind"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:ellipsize="end"
-            android:entries="@array/arr_file_kinds"
-            android:focusable="false"
-            android:inputType="none"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipGradle"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            app:chipBackgroundColor="@color/white"
+            app:chipCornerRadius="@dimen/radius_16"
+            app:chipIconSize="8dp"
+            app:rippleColor="@android:color/transparent"
+            app:ensureMinTouchTargetSize="false"
+            app:checkedIcon="@drawable/dot_mint"
+            app:chipIconVisible="false"
+            app:checkedIconVisible="true"
+            app:chipStrokeColor="@color/zinc_300"
+            app:chipStrokeWidth="1dp"
+            android:text="Gradle" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipSwift"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            app:rippleColor="@android:color/transparent"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            app:chipBackgroundColor="@color/white"
+            app:chipCornerRadius="@dimen/radius_16"
+            app:chipIconSize="8dp"
+            app:ensureMinTouchTargetSize="false"
+            app:checkedIcon="@drawable/dot_mint"
+            app:chipIconVisible="false"
+            app:checkedIconVisible="true"
+            app:chipStrokeColor="@color/zinc_300"
+            app:chipStrokeWidth="1dp"
+            android:text="Swift Package" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPubspec"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            app:ensureMinTouchTargetSize="false"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            app:chipBackgroundColor="@color/white"
+            app:chipCornerRadius="@dimen/radius_16"
+            app:chipIconSize="8dp"
+            app:rippleColor="@android:color/transparent"
+            app:checkedIcon="@drawable/dot_mint"
+            app:chipIconVisible="false"
+            app:checkedIconVisible="true"
+            app:chipStrokeColor="@color/zinc_300"
+            app:chipStrokeWidth="1dp"
+            android:text="Flutter" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPackageJson"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            app:chipBackgroundColor="@color/white"
+            app:chipCornerRadius="@dimen/radius_16"
+            app:chipIconSize="8dp"
+            app:rippleColor="@android:color/transparent"
+            app:ensureMinTouchTargetSize="false"
+            app:checkedIcon="@drawable/dot_mint"
+            app:chipIconVisible="false"
+            app:checkedIconVisible="true"
+            app:chipStrokeColor="@color/zinc_300"
+            app:chipStrokeWidth="1dp"
+            android:text="JavaScript" />
+    </com.google.android.material.chip.ChipGroup>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilUrl"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_button_pass"
+        app:boxBackgroundMode="none"
         android:gravity="center_vertical"
         app:endIconMode="clear_text"
-        app:hintEnabled="true"
-        app:hintTextColor="@color/zinc_500"
+        app:hintEnabled="false"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etUrl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:minHeight="50dp"
+            android:includeFontPadding="false"
             android:background="@android:color/transparent"
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
             android:gravity="center_vertical"
-            android:hint="URL을 입력해주세요."
             android:inputType="textUri"
             android:maxLines="1"
+            android:hint="build.gradle"
+            android:textColorHint="@color/zinc_500"
+            android:padding="0dp"
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
     </com.google.android.material.textfield.TextInputLayout>

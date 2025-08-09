@@ -5,7 +5,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         android:padding="16dp">
 
         <LinearLayout
@@ -35,31 +34,31 @@
                     android:stateListAnimator="@null">
 
                     <LinearLayout
-                    android:id="@+id/llAuto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_stack_auto"
-                    android:orientation="vertical"
-                    android:padding="14dp">
-
-                    <TextView
-                        android:id="@+id/tvAutoTitle"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/llAuto"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/spoqa_han_sans_neo_medium"
-                        android:text="Auto-Detect"
-                        android:textAppearance="?attr/textAppearanceBodyLarge" />
+                        android:background="@drawable/bg_stack_auto"
+                        android:orientation="vertical"
+                        android:padding="14dp">
 
-                    <TextView
-                        android:id="@+id/tvAutoDesc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/spoqa_han_sans_neo_regular"
-                        android:paddingTop="4dp"
-                        android:text="Gradle / Pubspec / SPM 스캔"
-                        android:textAppearance="?attr/textAppearanceBodySmall"
-                        android:textColor="?attr/colorOnSurfaceVariant" />
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/tvAutoTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+                            android:text="Auto-Detect"
+                            android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+                        <TextView
+                            android:id="@+id/tvAutoDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/spoqa_han_sans_neo_regular"
+                            android:paddingTop="4dp"
+                            android:text="Gradle / Pubspec / SPM 스캔"
+                            android:textAppearance="?attr/textAppearanceBodySmall"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
                 <Space
                     android:layout_width="12dp"
