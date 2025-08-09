@@ -34,38 +34,43 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_doc">
-
-                <!-- Link 버튼 -->
+                <!-- Pass 버튼 -->
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnLink"
+                    android:id="@+id/btnPass"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/spoqa_han_sans_neo_bold"
-                    android:text="Link"
+                    android:text="Pass"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    app:backgroundTint="@color/indigo_500"
-                    app:cornerRadius="8dp"
-                    app:rippleColor="@color/indigo_200" />
+                    android:backgroundTint="@null"
+                    app:backgroundTint="@null"
+                    android:textColor="@color/zinc_500"
+                    app:rippleColor="@null"
+                    style="@style/Widget.Material3.Button"
+                    android:background="@drawable/btn_pass_ripple"
+                    app:cornerRadius="@dimen/radius_16"/>
 
                 <View
                     android:layout_width="10dp"
                     android:layout_height="match_parent" />
 
-                <!-- Pass 버튼 -->
+                <!-- Link 버튼 -->
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnPass"
+                    android:id="@+id/btnLink"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/spoqa_han_sans_neo_bold"
-                    android:text="Pass"
+                    android:text="Doc"
                     android:textAllCaps="false"
+                    android:backgroundTint="@null"
+                    app:backgroundTint="@null"
                     android:textColor="@color/white"
-                    app:backgroundTint="@color/indigo_500"
-                    app:cornerRadius="8dp"
-                    app:rippleColor="@color/indigo_200" />
+                    app:rippleColor="@null"
+                    style="@style/Widget.Material3.Button"
+                    android:background="@drawable/btn_doc_ripple"
+                    app:cornerRadius="@dimen/radius_16"/>
 
             </LinearLayout>
 

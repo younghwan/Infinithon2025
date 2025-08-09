@@ -4,50 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     android:paddingTop="20dp">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/spoqa_han_sans_neo_medium"
-        android:paddingBottom="5dp"
-        android:text="URL"
-        android:textAppearance="?attr/textAppearanceTitleSmall" />
+        android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:fontFamily="@font/spoqa_han_sans_neo_regular"
+            android:paddingTop="12dp"
+            android:text="패키지 파일 URL 등록"
+            android:textAppearance="?attr/textAppearanceTitleSmall"
+            android:textFontWeight="600" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/spoqa_han_sans_neo_regular"
-                android:paddingTop="12dp"
-                android:text="패키지 파일 URL 등록"
-                android:textAppearance="?attr/textAppearanceTitleSmall"
-                android:textFontWeight="600" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/spoqa_han_sans_neo_regular"
-                android:paddingBottom="12dp"
-                android:paddingTop="4dp"
-                android:text="프로젝트 루트의 build.gradle(.kts), pubspec.yaml, Package.swift 등 원격 파일 URL을 입력하세요. 여러 개를 등록하면 모두 스캔합니다."
-                android:textAppearance="?attr/textAppearanceBodySmall"
-                android:textColor="?attr/colorOnSurfaceVariant" />
-        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_regular"
+            android:paddingBottom="12dp"
+            android:paddingTop="4dp"
+            android:text="프로젝트 루트의 build.gradle(.kts), pubspec.yaml, Package.swift 등 원격 파일 URL을 입력하세요."
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+    </LinearLayout>
 
     <!-- 4개 중 반드시 1개 선택 -->
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroupKind"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:clipToPadding="false"
-        android:layout_marginTop="10dp"
         android:paddingBottom="6dp"
         app:selectionRequired="true"
         app:singleSelection="true">
@@ -128,6 +120,14 @@
             app:ensureMinTouchTargetSize="false"
             app:rippleColor="@android:color/transparent" />
     </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/spoqa_han_sans_neo_medium"
+        android:text="URL"
+        android:textAppearance="?attr/textAppearanceTitleSmall" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilUrl"

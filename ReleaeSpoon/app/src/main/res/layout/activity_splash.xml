@@ -23,15 +23,5 @@
             android:textColor="@color/white"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
             android:text="@string/app_name"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/spoqa_han_sans_neo_light"
-            android:textSize="15sp"
-            android:layout_marginTop="5dp"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-            android:textColor="@color/white"
-            android:text="Your stack updates, spoon‑fed."/>
     </LinearLayout>
 </layout>
