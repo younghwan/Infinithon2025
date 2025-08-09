@@ -37,16 +37,113 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <LinearLayout
+            android:id="@+id/llCp"
+            app:layout_constraintTop_toBottomOf="@id/cl_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@+id/rvFeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
 
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cpAll"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ALL"
+                android:textAllCaps="true"
+                android:textColor="@color/indigo_800"
+                android:clickable="false"
+                android:checkable="false"
+                android:textSize="13sp"
+                android:layout_marginEnd="5dp"
+                app:ensureMinTouchTargetSize="false"
+                app:chipMinHeight="20dp"
+                android:fontFamily="@font/spoqa_han_sans_neo_medium"
+                app:chipStartPadding="3dp"
+                app:chipEndPadding="3dp"
+                app:chipStrokeColor="@color/indigo_800"
+                app:chipIconVisible="true"
+                app:rippleColor="@android:color/transparent"
+                app:chipBackgroundColor="@color/indigo_100"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cpHigh"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HIGH"
+                android:textAllCaps="true"
+                android:textColor="@color/rose_800"
+                android:clickable="false"
+                android:checkable="false"
+                android:textSize="13sp"
+                android:layout_marginEnd="5dp"
+                app:ensureMinTouchTargetSize="false"
+                app:chipMinHeight="20dp"
+                android:fontFamily="@font/spoqa_han_sans_neo_medium"
+                app:chipStartPadding="3dp"
+                app:chipEndPadding="3dp"
+                app:chipStrokeColor="@color/rose_800"
+                app:chipIconVisible="true"
+                app:rippleColor="@android:color/transparent"
+                app:chipBackgroundColor="@color/rose_100"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cpMed"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MED"
+                android:textAllCaps="true"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/amber_800"
+                android:clickable="false"
+                android:checkable="false"
+                app:ensureMinTouchTargetSize="false"
+                app:chipMinHeight="20dp"
+                android:textSize="13sp"
+                android:fontFamily="@font/spoqa_han_sans_neo_medium"
+                app:chipStartPadding="3dp"
+                app:chipEndPadding="3dp"
+                app:chipIconVisible="true"
+                app:chipStrokeColor="@color/amber_800"
+                app:rippleColor="@android:color/transparent"
+                app:chipBackgroundColor="@color/amber_100"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cpLow"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOW"
+                android:textAllCaps="true"
+                android:textColor="@color/emerald_800"
+                android:clickable="false"
+                android:checkable="false"
+                android:layout_marginEnd="5dp"
+                app:chipStrokeColor="@color/emerald_800"
+                app:ensureMinTouchTargetSize="false"
+                app:chipMinHeight="20dp"
+                android:textSize="13sp"
+                android:fontFamily="@font/spoqa_han_sans_neo_medium"
+                app:chipStartPadding="3dp"
+                app:chipEndPadding="3dp"
+                app:chipIconVisible="true"
+                app:rippleColor="@android:color/transparent"
+                app:chipBackgroundColor="@color/emerald_100"/>
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFeed"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_below="@+id/cl_header"
-            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_header"
+            app:layout_constraintTop_toBottomOf="@id/llCp"
             tools:listitem="@layout/item_feed" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

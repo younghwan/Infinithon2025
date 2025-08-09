@@ -8,21 +8,23 @@
 <!--    android:padding="5dp"-->
 <!--    xmlns:tools="http://schemas.android.com/tools">-->
 
-<com.google.android.material.chip.Chip
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Widget.Material3.Chip.Filter"
-    android:id="@+id/cpText"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:checkable="true"
-    android:fontFamily="@font/spoqa_han_sans_neo_medium"
-    app:chipBackgroundColor="@color/white"
-    app:chipCornerRadius="@dimen/radius_16"
-    app:chipIcon="@drawable/dot_mint"
-    app:chipIconSize="8dp"
-    app:chipIconVisible="true"
-    app:chipStrokeColor="@color/zinc_300"
-    app:chipStrokeWidth="1dp"
-    tools:text="Android" /><!--</LinearLayout>-->
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/cpText"
+        style="@style/Widget.Material3.Chip.Filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:fontFamily="@font/spoqa_han_sans_neo_medium"
+        app:chipBackgroundColor="@color/white"
+        app:chipCornerRadius="@dimen/radius_16"
+        app:chipIcon="@drawable/dot_mint"
+        app:chipIconSize="8dp"
+        app:chipIconVisible="true"
+        app:chipStrokeColor="@color/zinc_300"
+        app:chipStrokeWidth="1dp"
+        tools:text="Android" />
+</layout>
