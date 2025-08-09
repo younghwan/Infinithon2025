@@ -2,7 +2,6 @@ package com.dang1000.releaspoon
 
 // FeedCache.kt (간단 SharedPreferences JSON 캐시)
 
-import ArtifactFeed
 import android.content.Context
 import org.json.JSONArray
 import org.json.JSONObject
@@ -11,7 +10,7 @@ object FeedCache {
     private const val PREF = "feed_cache"
     private const val KEY = "items" // JSON Array: [{name:"a", version:"1.0"}]
 
-    fun save(context: Context, pairs: List<Pair<String, ArtifactFeed>>) {
+    fun save(context: Context, pairs: List<Pair<String, String>>) {
         val arr = JSONArray().apply {
             pairs.forEach { (name, ver) ->
                 put(JSONObject().apply {

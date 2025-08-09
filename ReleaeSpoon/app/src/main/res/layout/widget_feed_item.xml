@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:textColor="@color/emerald_500"
         android:id="@+id/tvName"
         android:textStyle="bold"
         android:textSize="14sp"
@@ -15,6 +16,14 @@
     <TextView
         android:id="@+id/tvVersion"
         android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvText"
+        android:textSize="11sp"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>

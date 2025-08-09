@@ -1,5 +1,6 @@
 package com.dang1000.releaspoon
 
+import ArtifactFeed
 import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
@@ -132,21 +133,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             val result = repo.fetchArtifacts(fileUrl, fileTypeHint)
             result
                 .onSuccess { res ->
-                    val pairs = res.artifacts.flatMap { artifact ->
-                        artifact.versions.map { feed -> artifact.name to feed }
-                    }
-                    if (pairs.isNotEmpty()) {
-                        adapter.addItems(pairs)
-                        Log.d("younghwan", "success $res")
-                    } else {
-                        Log.d("younghwan", "표시할 아티팩트가 없습니다.")
-                    }
-                    if (pairs.isNotEmpty()) {
-                        adapter.addItems(pairs)
-                        FeedCache.save(this@MainActivity, pairs)
+                    val uiPairs: List<Pair<String, ArtifactFeed>> =
+                        res.artifacts.flatMap { artifact ->
+                            artifact.versions.map { feed -> artifact.name to feed }
+                        }
+
+                    val cachePairs: List<Pair<String, String>> =
+                        uiPairs.map { (name, feed) -> name to feed.version }
+
+                    Log.d("younghwan" , "cachePairs $cachePairs")
+                    if (uiPairs.isNotEmpty()) {
+                        adapter.addItems(uiPairs)
+
+                        // 위젯 캐시 저장 + 새로고침
+                        FeedCache.save(this@MainActivity, cachePairs)
                         val mgr = AppWidgetManager.getInstance(this@MainActivity)
                         val thisWidget = ComponentName(this@MainActivity, FeedAppWidget::class.java)
                         mgr.notifyAppWidgetViewDataChanged(mgr.getAppWidgetIds(thisWidget), R.id.lvFeed)
+
+                        Log.d("younghwan", "success $res")
+                    } else {
+                        Log.d("younghwan", "표시할 아티팩트가 없습니다.")
                     }
                 }
                 .onFailure { e ->
