@@ -17,21 +17,21 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/ivSortBookmark"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/ic_bookmark_selector"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/ivPlus"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
                 android:id="@+id/ivPlus"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/baseline_add_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivSortBookmark"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivSortBookmark"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_bookmark_selector"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

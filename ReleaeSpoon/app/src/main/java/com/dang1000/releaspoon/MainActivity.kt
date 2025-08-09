@@ -47,6 +47,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        onCLick()
+
         val progressBar: ProgressBar = findViewById(R.id.progressBar)
 
         // 회전 애니메이션 설정
