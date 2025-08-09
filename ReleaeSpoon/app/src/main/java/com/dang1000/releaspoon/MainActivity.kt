@@ -1,7 +1,10 @@
 package com.dang1000.releaspoon
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.lifecycle.lifecycleScope
 import com.dang1000.releaspoon.adapter.FeedAdapter
@@ -10,6 +13,11 @@ import com.dang1000.releaspoon.databinding.ActivityMainBinding
 import com.dang1000.releaspoon.network.ApiProvider
 import com.dang1000.releaspoon.network.ChangelogRepository
 import kotlinx.coroutines.launch
+
+import android.view.animation.RotateAnimation
+import android.widget.ProgressBar
+import androidx.activity.result.contract.ActivityResultContracts
+import kotlinx.coroutines.delay
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val layoutResID: Int get() = R.layout.activity_main
@@ -20,10 +28,45 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private lateinit var adapter: FeedAdapter
     private var showOnlyBookmarks = false
 
+    private val inputLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val data = result.data
+            val fileUrl = data?.getStringExtra(EXTRA_FILE_URL).orEmpty()
+            val fileTypeHint = data?.getStringExtra(EXTRA_FILE_TYPE_HINT).orEmpty()
+
+            if (fileUrl.isNotBlank() && fileTypeHint.isNotBlank()) {
+                requestAndShow(fileUrl, fileTypeHint)
+            } else {
+                Log.d("younghwan", "입력 값이 비어있습니다.")
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        onCLick()
+        val progressBar: ProgressBar = findViewById(R.id.progressBar)
+
+        // 회전 애니메이션 설정
+        val rotate = RotateAnimation(
+            0f, 360f, // 시작 각도와 종료 각도
+            RotateAnimation.RELATIVE_TO_SELF, 0.5f, // 회전 기준점 (자기 자신을 기준으로 회전)
+            RotateAnimation.RELATIVE_TO_SELF, 0.5f
+        )
+        rotate.duration = 1000 // 1초 동안 360도 회전
+        rotate.repeatCount = RotateAnimation.INFINITE // 무한 반복
+
+        // 애니메이션을 ProgressBar에 적용
+        progressBar.startAnimation(rotate)
+
+        // Coroutine을 사용하여 2초 후에 ProgressBar 숨기기
+        lifecycleScope.launch {
+            delay(2000) // 2초 대기
+            progressBar.clearAnimation()
+            viewDataBinding.clProgressBar.visibility = View.GONE
+        }
 
         // 1) RecyclerView/Adapter 초기화
         adapter = FeedAdapter()
@@ -44,6 +87,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             fileUrl = SpoonApplication.prefManager.packageUrl,
             fileTypeHint = SpoonApplication.prefManager.packageType
         )
+
+        viewDataBinding.ivPlus.setOnClickListener {
+            val intent = Intent(this, InputActivity::class.java).apply {
+                putExtra(EXTRA_FILE_URL, SpoonApplication.prefManager.packageUrl)
+                putExtra(EXTRA_FILE_TYPE_HINT, SpoonApplication.prefManager.packageType)
+            }
+            inputLauncher.launch(intent)
+        }
     }
 
     private fun onCLick() {
