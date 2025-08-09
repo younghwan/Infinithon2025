@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 드롭다운 표시 텍스트 -->
+    <string-array name="arr_file_kinds">
+        <item>Gradle (build.gradle / .kts)</item>
+        <item>Swift Package (Package.swift)</item>
+        <item>Flutter (pubspec.yaml)</item>
+        <item>JavaScript (package.json)</item>
+        <item></item>
+    </string-array>
+</resources>

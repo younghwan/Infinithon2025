@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/llContent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/tvNext"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+            <LinearLayout
+                android:id="@+id/llEntryTiles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvAuto"
+                    android:layout_width="0dp"
+                    android:checkable="true"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    app:checkedIcon="@null"
+                    app:cardForegroundColor="@android:color/transparent"
+                    app:rippleColor="@android:color/transparent"
+                    android:stateListAnimator="@null">
+
+                    <LinearLayout
+                    android:id="@+id/llAuto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_stack_auto"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/tvAutoTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spoqa_han_sans_neo_medium"
+                        android:text="Auto-Detect"
+                        android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+                    <TextView
+                        android:id="@+id/tvAutoDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spoqa_han_sans_neo_regular"
+                        android:paddingTop="4dp"
+                        android:text="Gradle / Pubspec / SPM 스캔"
+                        android:textAppearance="?attr/textAppearanceBodySmall"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+                </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <Space
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:checkable="true"
+                    android:id="@+id/cvManual"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    app:checkedIcon="@null"
+                    app:cardForegroundColor="@android:color/transparent"
+                    app:rippleColor="@android:color/transparent"
+                    android:stateListAnimator="@null">
+
+                    <LinearLayout
+                        android:id="@+id/llManual"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_stack_manual"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <TextView
+                            android:id="@+id/tvManualTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+                            android:text="Manual"
+                            android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+                        <TextView
+                            android:id="@+id/tvManualDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/spoqa_han_sans_neo_regular"
+                            android:paddingTop="4dp"
+                            android:text="언어·프레임워크 직접 선택"
+                            android:textAppearance="?attr/textAppearanceBodySmall"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <include
+                android:id="@+id/viewAuto"
+                layout="@layout/view_stack_auto" />
+
+            <include
+                android:id="@+id/viewManual"
+                layout="@layout/view_stack_manual" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/header_title"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            android:gravity="center_vertical"
+            android:text="내 스택 등록"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNext"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/big_button"
+            android:background="@drawable/bg_button_pass"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            android:gravity="center"
+            android:text="다음"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

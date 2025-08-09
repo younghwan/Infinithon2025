@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/layout_button_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:enabled="false"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            android:gravity="center"
+            android:paddingHorizontal="11dp"
+            android:paddingVertical="3dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="버튼" />
+
+    </LinearLayout>
+
+    <data>
+
+    </data>
+</layout>

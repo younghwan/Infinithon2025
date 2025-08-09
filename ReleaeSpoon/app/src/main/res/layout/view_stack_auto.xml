@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_regular"
+            android:paddingTop="12dp"
+            android:text="패키지 파일 URL 등록"
+            android:textAppearance="?attr/textAppearanceTitleSmall"
+            android:textFontWeight="600" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_regular"
+            android:paddingBottom="12dp"
+            android:paddingTop="4dp"
+            android:text="프로젝트 루트의 build.gradle(.kts), pubspec.yaml, Package.swift 등 원격 파일 URL을 입력하세요. 여러 개를 등록하면 모두 스캔합니다."
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/spoqa_han_sans_neo_medium"
+        android:paddingBottom="8dp"
+        android:text="URL"
+        android:textAppearance="?attr/textAppearanceTitleSmall" />
+
+    <!-- 파일 종류 드롭다운 -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilKind"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="파일 종류"
+        app:boxStrokeWidth="1dp"
+        android:background="@drawable/bg_button_pass"
+        app:boxStrokeWidthFocused="2dp"
+        app:layout_constraintEnd_toStartOf="@id/tilUrl"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/actKind"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:ellipsize="end"
+            android:entries="@array/arr_file_kinds"
+            android:focusable="false"
+            android:inputType="none"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUrl"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_button_pass"
+        android:gravity="center_vertical"
+        app:endIconMode="clear_text"
+        app:hintEnabled="true"
+        app:hintTextColor="@color/zinc_500"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUrl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/spoqa_han_sans_neo_regular"
+            android:gravity="center_vertical"
+            android:hint="URL을 입력해주세요."
+            android:inputType="textUri"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

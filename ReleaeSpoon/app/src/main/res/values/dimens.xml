@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="radius_16">12dp</dimen>
+    <dimen name="header_title">80dp</dimen>
+    <dimen name="big_button">50dp</dimen>
+</resources>
