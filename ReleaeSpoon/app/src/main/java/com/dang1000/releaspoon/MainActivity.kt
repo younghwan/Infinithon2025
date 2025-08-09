@@ -1,5 +1,7 @@
 package com.dang1000.releaspoon
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -14,6 +16,7 @@ import kotlinx.coroutines.launch
 
 import android.view.animation.RotateAnimation
 import android.widget.ProgressBar
+import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.coroutines.delay
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -24,6 +27,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private lateinit var adapter: FeedAdapter
     private var showOnlyBookmarks = false
+
+    private val inputLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val data = result.data
+            val fileUrl = data?.getStringExtra(EXTRA_FILE_URL).orEmpty()
+            val fileTypeHint = data?.getStringExtra(EXTRA_FILE_TYPE_HINT).orEmpty()
+
+            if (fileUrl.isNotBlank() && fileTypeHint.isNotBlank()) {
+                requestAndShow(fileUrl, fileTypeHint)
+            } else {
+                Log.d("younghwan", "입력 값이 비어있습니다.")
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,6 +87,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             fileUrl = SpoonApplication.prefManager.packageUrl,
             fileTypeHint = SpoonApplication.prefManager.packageType
         )
+
+        viewDataBinding.ivPlus.setOnClickListener {
+            val intent = Intent(this, InputActivity::class.java).apply {
+                putExtra(EXTRA_FILE_URL, SpoonApplication.prefManager.packageUrl)
+                putExtra(EXTRA_FILE_TYPE_HINT, SpoonApplication.prefManager.packageType)
+            }
+            inputLauncher.launch(intent)
+        }
     }
 
     private fun requestAndShow(fileUrl: String, fileTypeHint: String) {
