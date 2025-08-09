@@ -1,16 +1,18 @@
 package com.dang1000.releaspoon
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
-import com.dang1000.releaspoon.base.BaseActivity
+import androidx.databinding.DataBindingUtil
 import com.dang1000.releaspoon.databinding.ActivityStackBinding
 
-class StackActivity : BaseActivity<ActivityStackBinding>() {
-    override val layoutResID: Int
-        get() = R.layout.activity_stack
+class StackActivity : AppCompatActivity() {
+    val layoutResID: Int get() = R.layout.activity_stack
+    lateinit var viewDataBinding: ActivityStackBinding
 
     private val indigo300 by lazy { ContextCompat.getColor(this, R.color.indigo_500) }
     private val indigo100 by lazy { ContextCompat.getColor(this, R.color.indigo_100) }
@@ -23,7 +25,12 @@ class StackActivity : BaseActivity<ActivityStackBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewDataBinding = DataBindingUtil.setContentView(this, layoutResID)
+
         onClick()
+
+        window.statusBarColor = Color.WHITE
+        window.navigationBarColor = Color.WHITE
 
         // initial view
         viewAuto.chipGroupKind.setOnCheckedStateChangeListener { group, checkedIds ->

@@ -5,10 +5,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="16dp"
+        android:background="@color/white">
 
         <LinearLayout
             android:id="@+id/llContent"
+            android:paddingHorizontal="16dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
@@ -120,6 +123,7 @@
             android:fontFamily="@font/spoqa_han_sans_neo_medium"
             android:gravity="center_vertical"
             android:text="내 스택 등록"
+            android:paddingHorizontal="16dp"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintTop_toTopOf="parent" />
 
