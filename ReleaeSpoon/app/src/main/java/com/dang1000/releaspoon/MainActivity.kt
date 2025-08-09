@@ -1,6 +1,8 @@
 package com.dang1000.releaspoon
 
 import android.app.Activity
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -138,6 +140,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                         Log.d("younghwan", "success $res")
                     } else {
                         Log.d("younghwan", "표시할 아티팩트가 없습니다.")
+                    }
+                    if (pairs.isNotEmpty()) {
+                        adapter.addItems(pairs)
+                        FeedCache.save(this@MainActivity, pairs)
+                        val mgr = AppWidgetManager.getInstance(this@MainActivity)
+                        val thisWidget = ComponentName(this@MainActivity, FeedAppWidget::class.java)
+                        mgr.notifyAppWidgetViewDataChanged(mgr.getAppWidgetIds(thisWidget), R.id.lvFeed)
                     }
                 }
                 .onFailure { e ->
