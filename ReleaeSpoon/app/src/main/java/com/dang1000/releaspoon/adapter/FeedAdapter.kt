@@ -9,40 +9,63 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dang1000.releaspoon.databinding.ItemFeedBinding
 
-class FeedAdapter(
-    private val name: String,
-    private val items: List<ArtifactFeed>
-) : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
+class FeedAdapter : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
+
+    /** 원본 데이터 */
+    private val items: MutableList<Pair<String, ArtifactFeed>> = mutableListOf()
+
+    /** 화면에 보여줄 데이터 */
+    private var filteredItems: List<Pair<String, ArtifactFeed>> = items
 
     inner class FeedViewHolder(val binding: ItemFeedBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): FeedViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemFeedBinding.inflate(inflater, parent, false)
+    /** 외부에서 데이터 추가 */
+    fun addItems(newItems: List<Pair<String, ArtifactFeed>>) {
+        items.addAll(newItems)
+        filteredItems = items
+        notifyDataSetChanged()
+    }
+
+    /** 북마크 필터 */
+    fun filterBookmarks(showOnlyBookmarks: Boolean) {
+        filteredItems = if (showOnlyBookmarks) {
+            items.filter { it.second.isBookmarked }
+        } else {
+            items
+        }
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
+        val binding = ItemFeedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FeedViewHolder(binding)
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
-        val item = items[position]
-        holder.binding.let {
-            it.tvDoc.text = item.text
-            it.tvVersion.text = item.version
-            it.tvLibraryName.text = name
-            it.btnLink.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.links.first()))
+        val (name, feed) = filteredItems[position]
+
+        with(holder.binding) {
+            tvDoc.text = feed.text
+            tvVersion.text = feed.version
+            tvLibraryName.text = name
+
+            btnLink.setOnClickListener {
+                val firstLink = feed.links.firstOrNull() ?: return@setOnClickListener
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(firstLink))
                 it.context.startActivity(intent)
             }
-            it.ivBookmark.setOnClickListener {
-                it.isSelected = !it.isSelected
+
+            ivBookmark.isSelected = feed.isBookmarked
+            ivBookmark.setOnClickListener { v ->
+                v.isSelected = !v.isSelected
+                feed.isBookmarked = v.isSelected
             }
-            it.cpImpact.text = "impact : ${item.impact}"
+
+            cpImpact.text = "impact : ${feed.impact}"
         }
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = filteredItems.size
 }
