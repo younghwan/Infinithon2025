@@ -3,24 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?attr/selectableItemBackground"
         app:cardCornerRadius="16dp"
-        app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="?attr/colorPrimary"
         app:strokeColor="@android:color/transparent">
-
-        <!--    <androidx.cardview.widget.CardView-->
-        <!--        app:layout_constraintTop_toTopOf="parent"-->
-        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content">-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,9 +22,11 @@
             android:background="@drawable/bg_item_spoon"
             android:padding="16dp">
 
+            <!-- 버튼 영역 -->
             <LinearLayout
+                android:id="@+id/buttonRow"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
@@ -39,43 +35,45 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_doc">
 
-                <LinearLayout
+                <!-- Link 버튼 -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLink"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_button_pass">
-
-                    <include
-                        layout="@layout/item_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
-                </LinearLayout>
+                    android:fontFamily="@font/spoqa_han_sans_neo_bold"
+                    android:text="Link"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/indigo_500"
+                    app:cornerRadius="8dp"
+                    app:rippleColor="@color/indigo_200" />
 
                 <View
                     android:layout_width="10dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
 
-
-
-                <LinearLayout
+                <!-- Pass 버튼 -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPass"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_button_doc">
+                    android:fontFamily="@font/spoqa_han_sans_neo_bold"
+                    android:text="Pass"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/indigo_500"
+                    app:cornerRadius="8dp"
+                    app:rippleColor="@color/indigo_200" />
 
-                    <include
-                        layout="@layout/item_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
-                </LinearLayout>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/spoqa_han_sans_neo_medium"
                 app:layout_constraintStart_toStartOf="@id/tv_library_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_library_name"
                 tools:text="1.2.0" />
@@ -89,7 +87,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_version"
                 app:layout_constraintTop_toBottomOf="@+id/tv_version"
-                tools:text="@string/lorem_ipsum" />
+                tools:text="desc desc desc" />
 
             <TextView
                 android:id="@+id/tv_library_name"
@@ -97,18 +95,35 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/spoqa_han_sans_neo_bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cpImpact"
                 tools:text="library name" />
 
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cpImpact"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_bold"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/emerald_800"
+                app:chipIconTint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="impact : high" />
+
+
             <ImageView
+                android:id="@+id/ivBookmark"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_bookmark"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                android:src="@drawable/ic_bookmark_selector"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <!--    </androidx.cardview.widget.CardView>-->
     </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
