@@ -44,9 +44,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
+    private fun doProgressBar() {
         val progressBar: ProgressBar = findViewById(R.id.progressBar)
 
         // 회전 애니메이션 설정
@@ -67,6 +66,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             progressBar.clearAnimation()
             viewDataBinding.clProgressBar.visibility = View.GONE
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        doProgressBar()
 
         // 1) RecyclerView/Adapter 초기화
         adapter = FeedAdapter()
