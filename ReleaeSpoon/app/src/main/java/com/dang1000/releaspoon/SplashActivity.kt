@@ -12,7 +12,7 @@ import com.dang1000.releaspoon.databinding.ActivitySplashBinding
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     override val layoutResID: Int = R.layout.activity_splash
-    private var isFirstLaunch = true
+    private var isFirstLaunch = SpoonApplication.prefManager.packageUrl.isEmpty()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
