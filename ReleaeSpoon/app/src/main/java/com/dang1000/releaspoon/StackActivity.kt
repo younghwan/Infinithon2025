@@ -21,35 +21,46 @@ class StackActivity : AppCompatActivity() {
 
     private val viewAuto by lazy { viewDataBinding.viewAuto }
     private val defaultChipId by lazy { viewDataBinding.viewAuto.chipGradle.id }
+
+    private var typeChipId: Int = 0
+
     enum class FileKind { BUILD_GRADLE, PACKAGE_SWIFT, PUBSPEC_YAML, PACKAGE_JSON }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewDataBinding = DataBindingUtil.setContentView(this, layoutResID)
+        viewDataBinding.lifecycleOwner = this
 
+        setInitView()
         onClick()
+    }
 
+    private fun setInitView() {
         window.statusBarColor = Color.WHITE
         window.navigationBarColor = Color.WHITE
 
+        typeChipId = defaultChipId
         // initial view
         viewAuto.chipGroupKind.setOnCheckedStateChangeListener { group, checkedIds ->
-            val id = checkedIds.firstOrNull() ?: defaultChipId
+            typeChipId = checkedIds.firstOrNull() ?: defaultChipId
             group.children.forEach { view ->
                 val chip = view as com.google.android.material.chip.Chip
-                chip.isChipIconVisible = (chip.id == id)
+                chip.isChipIconVisible = (chip.id == typeChipId)
             }
             viewAuto.etUrl.text = null
-            viewAuto.etUrl.hint = hintFor(kindFromChipId(id))
+            viewAuto.etUrl.hint = packageType(typeChipId)
         }
-        viewAuto.chipGroupKind.check( defaultChipId)
-        viewAuto.etUrl.hint = hintFor(kindFromChipId(defaultChipId))
+        viewAuto.chipGroupKind.check(defaultChipId)
+        viewAuto.etUrl.hint = packageType(defaultChipId)
     }
 
     private fun onClick() {
         viewDataBinding.run {
             tvNext.setOnClickListener {
+                SpoonApplication.prefManager.packageType = packageType(typeChipId)
+                SpoonApplication.prefManager.packageUrl = viewAuto.etUrl.text.toString()
                 startActivity(Intent(this@StackActivity, MainActivity::class.java))
+                finish()
             }
 
             listOf(viewDataBinding.cvAuto, viewDataBinding.cvManual).forEach { c ->
@@ -71,7 +82,7 @@ class StackActivity : AppCompatActivity() {
         }
     }
 
-    private fun kindFromChipId(id: Int): FileKind = when (id) {
+    private fun packageChipId(id: Int): FileKind = when (id) {
         viewAuto.chipGradle.id -> FileKind.BUILD_GRADLE
         viewAuto.chipSwift.id -> FileKind.PACKAGE_SWIFT
         viewAuto.chipPubspec.id -> FileKind.PUBSPEC_YAML
@@ -79,7 +90,7 @@ class StackActivity : AppCompatActivity() {
         else -> FileKind.BUILD_GRADLE
     }
 
-    private fun hintFor(kind: FileKind): String = when (kind) {
+    private fun packageType(id: Int): String = when (packageChipId(id)) {
         FileKind.BUILD_GRADLE -> "build.gradle"
         FileKind.PACKAGE_SWIFT -> "Package.swift"
         FileKind.PUBSPEC_YAML -> "pubspec.yaml"

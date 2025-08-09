@@ -9,7 +9,6 @@ import androidx.databinding.ViewDataBinding
 
 abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     lateinit var viewDataBinding: VB
-
     abstract val layoutResID: Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +32,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
             viewDataBinding.root.paddingRight,
             navigationHeight() + viewDataBinding.root.paddingBottom
         )
-
     }
 
     fun statusBarHeight(): Int {

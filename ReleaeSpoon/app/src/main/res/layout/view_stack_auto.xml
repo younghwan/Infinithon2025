@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@color/white"
     android:paddingTop="20dp">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardInfo"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="@dimen/radius_16"
-        app:strokeColor="@android:color/transparent"
-        android:background="@drawable/bg_item_spoon"
-        app:cardUseCompatPadding="true">
+        android:fontFamily="@font/spoqa_han_sans_neo_medium"
+        android:paddingBottom="5dp"
+        android:text="URL"
+        android:textAppearance="?attr/textAppearanceTitleSmall" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,24 +40,17 @@
                 android:textAppearance="?attr/textAppearanceBodySmall"
                 android:textColor="?attr/colorOnSurfaceVariant" />
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/spoqa_han_sans_neo_medium"
-        android:paddingBottom="8dp"
-        android:text="URL"
-        android:textAppearance="?attr/textAppearanceTitleSmall" />
 
     <!-- 4개 중 반드시 1개 선택 -->
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroupKind"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:singleSelection="true"
-        app:selectionRequired="true"
         android:clipToPadding="false"
-        android:paddingBottom="6dp">
+        android:layout_marginTop="10dp"
+        android:paddingBottom="6dp"
+        app:selectionRequired="true"
+        app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipGradle"
@@ -67,17 +59,17 @@
             android:layout_height="wrap_content"
             android:checkable="true"
             android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            android:text="Gradle"
+            app:checkedIcon="@drawable/dot_mint"
+            app:checkedIconVisible="true"
             app:chipBackgroundColor="@color/white"
             app:chipCornerRadius="@dimen/radius_16"
             app:chipIconSize="8dp"
-            app:rippleColor="@android:color/transparent"
-            app:ensureMinTouchTargetSize="false"
-            app:checkedIcon="@drawable/dot_mint"
             app:chipIconVisible="false"
-            app:checkedIconVisible="true"
             app:chipStrokeColor="@color/zinc_300"
             app:chipStrokeWidth="1dp"
-            android:text="Gradle" />
+            app:ensureMinTouchTargetSize="false"
+            app:rippleColor="@android:color/transparent" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipSwift"
@@ -85,18 +77,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
-            app:rippleColor="@android:color/transparent"
             android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            android:text="Swift Package"
+            app:checkedIcon="@drawable/dot_mint"
+            app:checkedIconVisible="true"
             app:chipBackgroundColor="@color/white"
             app:chipCornerRadius="@dimen/radius_16"
             app:chipIconSize="8dp"
-            app:ensureMinTouchTargetSize="false"
-            app:checkedIcon="@drawable/dot_mint"
             app:chipIconVisible="false"
-            app:checkedIconVisible="true"
             app:chipStrokeColor="@color/zinc_300"
             app:chipStrokeWidth="1dp"
-            android:text="Swift Package" />
+            app:ensureMinTouchTargetSize="false"
+            app:rippleColor="@android:color/transparent" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipPubspec"
@@ -104,18 +96,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
-            app:ensureMinTouchTargetSize="false"
             android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            android:text="Flutter"
+            app:checkedIcon="@drawable/dot_mint"
+            app:checkedIconVisible="true"
             app:chipBackgroundColor="@color/white"
             app:chipCornerRadius="@dimen/radius_16"
             app:chipIconSize="8dp"
-            app:rippleColor="@android:color/transparent"
-            app:checkedIcon="@drawable/dot_mint"
             app:chipIconVisible="false"
-            app:checkedIconVisible="true"
             app:chipStrokeColor="@color/zinc_300"
             app:chipStrokeWidth="1dp"
-            android:text="Flutter" />
+            app:ensureMinTouchTargetSize="false"
+            app:rippleColor="@android:color/transparent" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipPackageJson"
@@ -124,26 +116,27 @@
             android:layout_height="wrap_content"
             android:checkable="true"
             android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            android:text="JavaScript"
+            app:checkedIcon="@drawable/dot_mint"
+            app:checkedIconVisible="true"
             app:chipBackgroundColor="@color/white"
             app:chipCornerRadius="@dimen/radius_16"
             app:chipIconSize="8dp"
-            app:rippleColor="@android:color/transparent"
-            app:ensureMinTouchTargetSize="false"
-            app:checkedIcon="@drawable/dot_mint"
             app:chipIconVisible="false"
-            app:checkedIconVisible="true"
             app:chipStrokeColor="@color/zinc_300"
             app:chipStrokeWidth="1dp"
-            android:text="JavaScript" />
+            app:ensureMinTouchTargetSize="false"
+            app:rippleColor="@android:color/transparent" />
     </com.google.android.material.chip.ChipGroup>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilUrl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@drawable/bg_button_pass"
-        app:boxBackgroundMode="none"
         android:gravity="center_vertical"
+        app:boxBackgroundMode="none"
         app:endIconMode="clear_text"
         app:hintEnabled="false"
         app:layout_constraintTop_toTopOf="parent">
@@ -152,17 +145,17 @@
             android:id="@+id/etUrl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:minHeight="50dp"
-            android:includeFontPadding="false"
             android:background="@android:color/transparent"
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
             android:gravity="center_vertical"
+            android:hint="build.gradle"
+            android:includeFontPadding="false"
             android:inputType="textUri"
             android:maxLines="1"
-            android:hint="build.gradle"
-            android:textColorHint="@color/zinc_500"
+            android:minHeight="50dp"
             android:padding="0dp"
             android:singleLine="true"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColorHint="@color/zinc_500" />
     </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>

@@ -3,7 +3,7 @@
     <item>
         <shape android:shape="rectangle">
             <!-- 카드 라운드와 동일하게 -->
-            <corners android:radius="16dp" />
+            <corners android:radius="@dimen/radius_16" />
             <!-- 위→아래(90도)로 은은한 그라데이션 -->
             <gradient
                 android:type="linear"
@@ -28,7 +28,7 @@
     <!-- [테두리] 아주 얇은 보더 (마지막 = 위에 그려짐) -->
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="16dp" />
+            <corners android:radius="@dimen/radius_16" />
             <solid android:color="@android:color/transparent" />
             <!-- 1) 가장 무난: 1dp + 낮은 알파 -->
             <stroke

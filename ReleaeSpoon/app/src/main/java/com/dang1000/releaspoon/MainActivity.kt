@@ -24,8 +24,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         // 서버 요청
         requestAndShow(
-            fileUrl = "https://github.com/younghwan/android-calculator-mvvm/blob/main/counter/build.gradle",
-            fileTypeHint = "build.gradle"
+            fileUrl = SpoonApplication.prefManager.packageUrl,
+            fileTypeHint = SpoonApplication.prefManager.packageType
         )
     }
 

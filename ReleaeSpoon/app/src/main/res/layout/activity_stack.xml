@@ -5,8 +5,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingHorizontal="16dp"
-        android:paddingBottom="16dp"
         android:background="@color/white">
 
         <LinearLayout
@@ -135,6 +133,8 @@
             android:fontFamily="@font/spoqa_han_sans_neo_medium"
             android:gravity="center"
             android:text="다음"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             app:layout_constraintBottom_toBottomOf="parent" />
 
