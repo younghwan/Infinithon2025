@@ -17,4 +17,6 @@ data class ArtifactFeed(
     val text: String,
     val impact: String,
     val links: List<String> = emptyList()
-)
+) {
+    var isBookmarked = false
+}

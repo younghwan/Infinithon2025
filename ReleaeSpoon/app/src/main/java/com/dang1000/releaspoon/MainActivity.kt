@@ -17,12 +17,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val api by lazy { ApiProvider.create("http://10.99.10.153:8000") } // 서버 주소
     private val repo by lazy { ChangelogRepository(api) }
 
+    private lateinit var adapter: FeedAdapter
+    private var showOnlyBookmarks = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewDataBinding.rvFeed.layoutManager = LinearLayoutManager(this)
+        // 1) RecyclerView/Adapter 초기화
+        adapter = FeedAdapter()
+        viewDataBinding.rvFeed.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = this@MainActivity.adapter
+        }
 
-        // 서버 요청
+        // 2) 북마크 필터 토글
+        viewDataBinding.ivSortBookmark.setOnClickListener { v ->
+            showOnlyBookmarks = !showOnlyBookmarks
+            v.isSelected = showOnlyBookmarks
+            adapter.filterBookmarks(showOnlyBookmarks)
+        }
+
+        // 3) 서버 요청
         requestAndShow(
             fileUrl = SpoonApplication.prefManager.packageUrl,
             fileTypeHint = SpoonApplication.prefManager.packageType
@@ -32,20 +47,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun requestAndShow(fileUrl: String, fileTypeHint: String) {
         lifecycleScope.launch {
             val result = repo.fetchArtifacts(fileUrl, fileTypeHint)
-            result.onSuccess { res ->
-                if (res.artifacts.isNotEmpty()) {
-                    val artifact = res.artifacts.first() // 일단 첫 번째만 표시
-                    viewDataBinding.rvFeed.adapter = FeedAdapter(
-                        name = artifact.name,
-                        items = artifact.versions
-                    )
-                    Log.d("younghwan", "success $res")
-                } else {
-                    Log.d("younghwan", "표시할 아티팩트가 없습니다.")
+            result
+                .onSuccess { res ->
+                    val pairs = res.artifacts.flatMap { artifact ->
+                        artifact.versions.map { feed -> artifact.name to feed }
+                    }
+                    if (pairs.isNotEmpty()) {
+                        adapter.addItems(pairs)
+                        Log.d("younghwan", "success $res")
+                    } else {
+                        Log.d("younghwan", "표시할 아티팩트가 없습니다.")
+                    }
                 }
-            }.onFailure {
-                Log.d("younghwan", "요청 실패: ${it.message}")
-            }
+                .onFailure { e ->
+                    Log.d("younghwan", "요청 실패: ${e.message}")
+                }
         }
     }
 }
