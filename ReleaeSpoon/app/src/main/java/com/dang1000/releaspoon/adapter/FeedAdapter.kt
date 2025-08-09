@@ -85,6 +85,21 @@ class FeedAdapter : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
                     cpLow.isVisible = true
                 }
             }
+
+            btnPass.setOnClickListener {
+                // 현재 position의 아이템
+                val target = filteredItems[position]
+
+                // 원본 데이터에서 삭제
+                items.remove(target)
+
+                // 필터된 리스트 갱신
+                filteredItems = items
+
+                // RecyclerView 갱신
+                notifyItemRemoved(position)
+                notifyItemRangeChanged(position, filteredItems.size)
+            }
         }
     }
 
