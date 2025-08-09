@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.dang1000.releaspoon.databinding.ItemFeedBinding
 
@@ -62,8 +63,23 @@ class FeedAdapter : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
                 v.isSelected = !v.isSelected
                 feed.isBookmarked = v.isSelected
             }
-
-            cpImpact.text = "impact : ${feed.impact}"
+            when (feed.impact) {
+                "high" -> {
+                    cpImpact.isVisible = true
+                    cpMed.isVisible = false
+                    cpLow.isVisible = false
+                }
+                "medium" -> {
+                    cpImpact.isVisible = false
+                    cpMed.isVisible = true
+                    cpLow.isVisible = false
+                }
+                "low" -> {
+                    cpImpact.isVisible = false
+                    cpMed.isVisible = false
+                    cpLow.isVisible = true
+                }
+            }
         }
     }
 
