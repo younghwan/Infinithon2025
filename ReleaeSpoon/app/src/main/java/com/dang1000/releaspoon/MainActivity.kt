@@ -102,6 +102,28 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
+    private fun onCLick() {
+        viewDataBinding.run {
+            cpAll.setOnClickListener {
+                adapter.filterImpacts(null)
+            }
+
+            listOf(cpHigh, cpMed, cpLow).forEach {
+                it.setOnClickListener {
+                    val keyword = impactKeyword(it.id)
+                    adapter.filterImpacts(keyword)
+                }
+            }
+        }
+    }
+
+    private fun impactKeyword(id: Int): String = when (id) {
+        viewDataBinding.cpHigh.id -> HIGH
+        viewDataBinding.cpMed.id -> MED
+        viewDataBinding.cpMed.id -> LOW
+        else -> LOW
+    }
+
     private fun requestAndShow(fileUrl: String, fileTypeHint: String) {
         lifecycleScope.launch {
             val result = repo.fetchArtifacts(fileUrl, fileTypeHint)
@@ -121,5 +143,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     Log.d("younghwan", "요청 실패: ${e.message}")
                 }
         }
+    }
+
+    companion object {
+        const val HIGH = "high"
+        const val MED = "medium"
+        const val LOW = "low"
+
     }
 }

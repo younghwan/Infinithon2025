@@ -28,6 +28,11 @@ class FeedAdapter : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
         notifyDataSetChanged()
     }
 
+    fun filterImpacts(keyword: String?) {
+        filteredItems = if (keyword == null) items else items.filter { it.second.impact == keyword}
+        notifyDataSetChanged()
+    }
+
     /** 북마크 필터 */
     fun filterBookmarks(showOnlyBookmarks: Boolean) {
         filteredItems = if (showOnlyBookmarks) {
